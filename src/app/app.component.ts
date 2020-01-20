@@ -1,4 +1,4 @@
-import { Component, ViewChild, ComponentFactoryResolver, ElementRef } from '@angular/core';
+import { Component, ViewChild, ComponentFactoryResolver, ElementRef, ContentChildren, QueryList, ViewChildren } from '@angular/core';
 import { GetViewContainerDirective } from './directives/get-view-container.directive';
 import { ModalService } from './components/modal-dynamic/modal-service';
 import { ModalBodyComponent } from './components/modal-dynamic/modal-body/modal-body.component';
@@ -15,8 +15,8 @@ export class AppComponent {
   @ViewChild(GetViewContainerDirective, {static: true})
   getViewContainer;
 
-  @ViewChild(ModalBodyComponent, {static: false})
-  modalBody: ModalBodyComponent;
+  @ViewChildren(ModalBodyComponent)
+  modalBody: QueryList<ModalBodyComponent>;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
     private modalService: ModalService) {}
@@ -26,8 +26,8 @@ export class AppComponent {
   }
 
   ngAfterViewInit(): void {
-    this.modalBody.contextExp.nome = 'Corpo modal';
-    console.log(( <any> this.modalBody).element.nativeElement);
+    this.modalBody.first.contextExp.nome = 'Corpo modal';
+    console.log(( <any> this.modalBody.first).element.nativeElement);
     //this.modalBody.contextExp.nome = 'Corpo Modal';
    // this.modalService.openTeste(this.modalBody);
   }

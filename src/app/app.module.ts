@@ -42,7 +42,7 @@ import { ModalFooterComponent } from './components/modal-dynamic/modal-footer/mo
    ],
    entryComponents: [
     ModalDynamicComponent,
-    ModalBodyComponent
+    //ModalBodyComponent
    ],
    imports: [
       BrowserModule,

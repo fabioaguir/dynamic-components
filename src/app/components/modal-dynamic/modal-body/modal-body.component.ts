@@ -11,7 +11,7 @@ export class ModalBodyComponent implements OnInit {
     nome: ''
   }
 
-  @ViewChild('container', {static: true}) container: TemplateRef<any>;
+  @ViewChild('container', {static: false}) container: TemplateRef<any>;
 
   constructor(private element: ElementRef) { }
 
